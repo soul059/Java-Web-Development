@@ -100,3 +100,31 @@ Before the introduction of annotations in Servlet 3.0, servlets were configured 
     <url-pattern>/greet</url-pattern>
 </servlet-mapping>
 ```
+
+### `RequestDispatcher`
+
+The `RequestDispatcher` interface allows you to forward a request to another resource (like a servlet or JSP) on the server, or to include the content of another resource in the response.
+
+### Error Handling
+
+Proper error handling is essential for a good user experience. You can configure error pages declaratively in `web.xml` or handle them programmatically in your servlets.
+
+### File Uploads
+
+Servlets make it easy to handle file uploads from a client. By using the `@MultipartConfig` annotation and the `Part` interface, you can process files submitted through an HTML form.
+
+### Asynchronous Processing
+
+Asynchronous servlets allow you to process long-running operations without blocking the request thread, which can improve the scalability of your application.
+
+### Security
+
+The Servlet API provides mechanisms for both declarative and programmatic security, allowing you to control access to your web resources based on user roles.
+
+### Server-Sent Events (SSE)
+
+Servlets can be used to implement Server-Sent Events, a technology that enables a server to push real-time updates to the client over a standard HTTP connection.
+
+### WebSockets
+
+The Java API for WebSocket provides a standard way to create WebSocket endpoints, which allow for full-duplex, bidirectional communication between a client and a server.

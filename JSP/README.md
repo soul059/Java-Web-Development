@@ -104,16 +104,12 @@ JSP actions are XML tags that invoke built-in functionality in the JSP container
     <jsp:getProperty name="user" property="username" />
     ```
 
-## JSP Implicit Objects
+## Advanced Topics
 
-JSPs provide several implicit objects that are available to scripting elements.
+### Custom Tags
 
-*   `request`: The `HttpServletRequest` object.
-*   `response`: The `HttpServletResponse` object.
-*   `out`: The `JspWriter` object, used to write content to the response.
-*   `session`: The `HttpSession` object, used to store user-specific data.
-*   `application`: The `ServletContext` object, used to store application-wide data.
-*   `config`: The `ServletConfig` object for the JSP.
-*   `pageContext`: The `PageContext` object, which provides a single point of access to all the other implicit objects.
-*   `page`: The servlet instance itself (`this`).
-*   `exception`: The `Throwable` object, available only in error pages.
+JSP allows you to create your own custom tags to encapsulate complex logic and promote reusability.
+
+### JSTL (JSP Standard Tag Library)
+
+JSTL provides a rich set of tags for common tasks, such as iteration, conditional logic, and internationalization, helping to eliminate the need for Java code in your JSPs.

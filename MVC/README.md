@@ -141,9 +141,12 @@ public class LoginController extends HttpServlet {
 6.  `welcome.jsp` retrieves the `user` object from the request and displays a welcome message.
 7.  If the credentials are invalid, the controller redirects the user back to `login.jsp` with an error message.
 
-## Benefits of MVC
+## Related Patterns
 
-*   **Separation of Concerns:** MVC separates the application logic from the user interface, making the code more organized and easier to maintain.
-*   **Parallel Development:** Different developers can work on the model, view, and controller simultaneously.
-*   **Reusability:** The model can be reused with different views.
-*   **Testability:** The separation of concerns makes it easier to test the different parts of the application in isolation.
+### Front Controller
+
+The Front Controller pattern provides a centralized entry point for all incoming requests, which is a common approach in MVC frameworks.
+
+### View Helper
+
+The View Helper pattern helps to offload business logic from the views, keeping them clean and focused on presentation.
