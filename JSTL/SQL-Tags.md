@@ -1,3 +1,5 @@
+> **Warning:** The JSTL SQL tags are generally **not recommended for use in production applications**. They mix database logic with the presentation layer (JSP), which violates the MVC design pattern and can lead to code that is difficult to maintain, secure, and test. Prefer using a dedicated data access layer (e.g., DAO pattern with JDBC, Spring JDBC, or a JPA/Hibernate). These tags are primarily useful for rapid prototyping or very simple applications.
+
 # JSTL SQL Tags
 
 The JavaServer Pages Standard Tag Library (JSTL) SQL tag library provides a set of tags for interacting directly with relational databases from within JSP pages. These tags are designed to simplify database operations for rapid prototyping and in simple applications.

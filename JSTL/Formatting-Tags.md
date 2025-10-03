@@ -72,3 +72,37 @@ Formatting tags are locale-sensitive and are a key part of creating internationa
 ```
 
 This would format the number and date according to French conventions.
+
+### Number and Date Parsing
+
+The `<fmt:parseNumber>` and `<fmt:parseDate>` tags are used to parse strings into numbers or dates, respectively. This is useful when handling user input.
+
+**`<fmt:parseNumber>` Attributes:**
+
+*   `value`: The string to be parsed.
+*   `type`: The type of number (`number`, `currency`, or `percent`).
+*   `pattern`: A custom pattern for parsing.
+*   `var`: The name of the variable to store the parsed number.
+*   `scope`: The scope of the variable.
+
+**`<fmt:parseDate>` Attributes:**
+
+*   `value`: The string to be parsed.
+*   `type`: The type of date (`date`, `time`, or `both`).
+*   `pattern`: A custom pattern for parsing.
+*   `var`: The name of the variable to store the parsed date.
+*   `scope`: The scope of the variable.
+
+**Parsing Example:**
+
+```jsp
+<%-- Parsing a number string --%>
+<c:set var="numberString" value="1,234.56" />
+<fmt:parseNumber var="parsedNumber" value="${numberString}" type="number" />
+<p>Parsed Number: ${parsedNumber}</p>
+
+<%-- Parsing a date string --%>
+<c:set var="dateString" value="2023-12-25" />
+<fmt:parseDate var="parsedDate" value="${dateString}" pattern="yyyy-MM-dd" />
+<p>Parsed Date: <fmt:formatDate value="${parsedDate}" dateStyle="full" /></p>
+```

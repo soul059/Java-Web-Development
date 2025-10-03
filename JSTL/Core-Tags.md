@@ -36,7 +36,7 @@ Here is a list of some of the most commonly used JSTL core tags with their descr
 
 ### Example Usage:
 
-Here is a simple example demonstrating the use of a few JSTL core tags:
+Here is a more comprehensive example demonstrating several JSTL core tags:
 
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -47,43 +47,71 @@ Here is a simple example demonstrating the use of a few JSTL core tags:
 </head>
 <body>
 
-    <%-- Using <c:set> to create a variable --%>
-    <c:set var="greeting" value="Hello, World!" scope="request" />
-
-    <%-- Using <c:out> to display the variable's value --%>
-    <h1><c:out value="${greeting}" /></h1>
-
-    <%-- Using <c:if> for conditional logic --%>
-    <c:set var="userRole" value="admin" />
-    <c:if test="${userRole == 'admin'}">
-        <p>Welcome, Administrator!</p>
-    </c:if>
-
-    <%-- Using <c:choose>, <c:when>, and <c:otherwise> --%>
-    <c:set var="dayOfWeek" value="5" />
-    <c:choose>
-        <c:when test="${dayOfWeek >= 1 && dayOfWeek <= 5}">
-            <p>It's a weekday.</p>
-        </c:when>
-        <c:otherwise>
-            <p>It's the weekend!</p>
-        </c:otherwise>
-    </c:choose>
-
-    <%-- Using <c:forEach> to loop through a list of items --%>
+    <%-- In a real application, these variables would likely be set by a servlet --%>
     <%
+        request.setAttribute("greeting", "Hello, JSTL!");
+        request.setAttribute("userRole", "admin");
+        request.setAttribute("dayOfWeek", java.time.LocalDate.now().getDayOfWeek().getValue());
         java.util.ArrayList<String> names = new java.util.ArrayList<>();
         names.add("Alice");
         names.add("Bob");
         names.add("Charlie");
         request.setAttribute("userNames", names);
     %>
+
+    <%-- <c:set>: Sets a variable. Can also be used to create new variables. --%>
+    <c:set var="pageTitle" value="JSTL Core Tags Demo" scope="page" />
+    <h1><c:out value="${pageTitle}" /></h1>
+
+    <%-- <c:out>: Displays content, escaping HTML by default to prevent XSS. --%>
+    <p><c:out value="${greeting}" /></p>
+    <c:set var="htmlContent" value="<script>alert('XSS');</script>" />
+    <p>Escaped content: <c:out value="${htmlContent}" /></p>
+    <p>Unescaped content (not recommended): <c:out value="${htmlContent}" escapeXml="false" /></p>
+
+
+    <%-- <c:if>: Simple conditional logic. --%>
+    <c:if test="${userRole == 'admin'}">
+        <p>Welcome, Administrator!</p>
+    </c:if>
+
+    <%-- <c:choose>, <c:when>, <c:otherwise>: Multi-way conditional logic. --%>
+    <h3>Today's Status</h3>
+    <c:choose>
+        <c:when test="${dayOfWeek >= 1 && dayOfWeek <= 5}">
+            <p>It's a weekday. Time to work!</p>
+        </c:when>
+        <c:otherwise>
+            <p>It's the weekend! Time to relax!</p>
+        </c:otherwise>
+    </c:choose>
+
+    <%-- <c:forEach>: Iterates over a collection. --%>
     <h2>User List:</h2>
     <ul>
-        <c:forEach var="name" items="${userNames}">
-            <li><c:out value="${name}" /></li>
+        <c:forEach var="name" items="${userNames}" varStatus="loop">
+            <li>
+                Item ${loop.count}: <c:out value="${name}" />
+                (Index: ${loop.index}, Is first: ${loop.first}, Is last: ${loop.last})
+            </li>
         </c:forEach>
     </ul>
+
+    <%-- <c:forTokens>: Iterates over tokens in a string. --%>
+    <h2>CSV Data:</h2>
+    <c:set var="csvData" value="item1,item2,item3" />
+    <ul>
+        <c:forTokens items="${csvData}" delims="," var="token">
+            <li><c:out value="${token}" /></li>
+        </c:forTokens>
+    </ul>
+
+    <%-- <c:url> and <c:param>: Creates a URL with parameters. --%>
+    <c:url var="profileUrl" value="/user/profile.jsp">
+        <c:param name="userId" value="123" />
+        <c:param name="theme" value="dark" />
+    </c:url>
+    <p>Generated URL: <a href="${profileUrl}"><c:out value="${profileUrl}" /></a></p>
 
 </body>
 </html>

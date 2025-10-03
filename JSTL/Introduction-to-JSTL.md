@@ -18,11 +18,11 @@ JSTL is organized into five main functional libraries, each with its own namespa
 
 | Library             | Prefix | Description                                                                                                         |
 | ------------------- | ------ | ------------------------------------------------------------------------------------------------------------------- |
-| **Core**            | `c`    | Provides essential tags for iteration, conditional logic, exception handling, and URL management. This is the most commonly used library. |
-| **Formatting (I18N)** | `fmt`  | Used for formatting and parsing numbers, dates, and times, and for internationalization (i18n) support.             |
-| **SQL**             | `sql`  | Contains tags for interacting with relational databases. However, using this library is often discouraged in real-world applications for security and design reasons. |
-| **XML**             | `x`    | Provides tags for creating and manipulating XML documents, including parsing and flow control based on XPath expressions. |
-| **Functions**       | `fn`   | Offers a set of functions for string manipulation, such as finding the length of a string or converting it to lowercase. |
+| **[Core](Core-Tags.md)**            | `c`    | Provides essential tags for iteration, conditional logic, exception handling, and URL management. This is the most commonly used library. |
+| **[Formatting (I18N)](Formatting-Tags.md)** | `fmt`  | Used for formatting and parsing numbers, dates, and times, and for internationalization (i18n) support.             |
+| **[SQL](SQL-Tags.md)**             | `sql`  | Contains tags for interacting with relational databases. However, using this library is often discouraged in real-world applications for security and design reasons. |
+| **[XML](XML-Tags.md)**             | `x`    | Provides tags for creating and manipulating XML documents, including parsing and flow control based on XPath expressions. |
+| **[Functions](Functions-Tags.md)**       | `fn`   | Offers a set of functions for string manipulation, such as finding the length of a string or converting it to lowercase. |
 
 ### How to Use JSTL
 
